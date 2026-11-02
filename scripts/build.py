@@ -2,11 +2,19 @@
 """Discover tickets, generate inputs, and compile the book with XeLaTeX."""
 
 from pathlib import Path
+import os
 import re
 import shutil
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def fail(message: str) -> None:
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        escaped = message.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+        print(f"::error title=Сборка PDF::{escaped}", flush=True)
+    raise SystemExit(message)
 
 
 def generate_inputs(root: Path = ROOT) -> list[Path]:
@@ -34,15 +42,23 @@ def generate_inputs(root: Path = ROOT) -> list[Path]:
 
 
 def main() -> None:
-    tickets = generate_inputs()
+    try:
+        tickets = generate_inputs()
+    except ValueError as error:
+        fail(str(error))
     if not shutil.which("latexmk") or not shutil.which("xelatex"):
-        raise SystemExit("Нужны latexmk и XeLaTeX. Установка описана в CONTRIBUTING.md")
+        fail("Нужны latexmk и XeLaTeX. Установка описана в CONTRIBUTING.md")
     print(f"Билетов: {len(tickets)}", flush=True)
-    subprocess.run(
+    result = subprocess.run(
         ["latexmk", "-xelatex", "-interaction=nonstopmode", "-halt-on-error",
          "-file-line-error", "-outdir=build", "-no-shell-escape", "main.tex"],
-        cwd=ROOT, check=True,
+        cwd=ROOT, check=False,
     )
+    if result.returncode:
+        log = ROOT / "build" / "main.log"
+        details = (log.read_text(encoding="utf-8", errors="replace")[-6000:]
+                   if log.exists() else "LaTeX не создал build/main.log. Смотрите вывод Compile tickets.")
+        fail(f"latexmk завершился с кодом {result.returncode}.\n{details}")
     shutil.copyfile(ROOT / "build" / "main.pdf", ROOT / "build" / "tickets.pdf")
     print("Готово: build/tickets.pdf", flush=True)
 
