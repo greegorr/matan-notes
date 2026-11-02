@@ -1,0 +1,22 @@
+name: Ошибка в билете
+description: Сообщить об опечатке, неверной формуле или непонятном доказательстве
+title: "Билет XX: краткое описание ошибки"
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Где ошибка?
+      description: Номер билета, формулировка или шаг доказательства. Для PDF укажите также версию из SOURCE_COMMIT.txt.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: В чём проблема?
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Как исправить?
+      description: Необязательно. Можно приложить объяснение или ссылку на источник.

@@ -1,0 +1,4 @@
+# Замените YOUR_GITHUB_LOGIN своим логином, MODERATOR_LOGIN - логином модератора.
+# Если второго модератора пока нет, удалите @MODERATOR_LOGIN.
+# Каждый указанный пользователь должен принять приглашение с правами Write.
+* @YOUR_GITHUB_LOGIN @MODERATOR_LOGIN
