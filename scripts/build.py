@@ -56,7 +56,7 @@ def main() -> None:
     )
     if result.returncode:
         log = ROOT / "build" / "main.log"
-        details = (log.read_text(encoding="utf-8", errors="replace")[-6000:]
+        details = (log.read_text(encoding="utf-8", errors="replace")[-2000:]
                    if log.exists() else "LaTeX не создал build/main.log. Смотрите вывод Compile tickets.")
         fail(f"latexmk завершился с кодом {result.returncode}.\n{details}")
     shutil.copyfile(ROOT / "build" / "main.pdf", ROOT / "build" / "tickets.pdf")
