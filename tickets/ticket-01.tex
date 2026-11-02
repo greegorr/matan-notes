@@ -1,0 +1,18 @@
+\ticket{01}{Предел числовой последовательности}
+\label{ticket:01}
+
+\begin{definition}
+Число $a\in\mathbb{R}$ называется пределом последовательности $(x_n)$, если
+\[
+  \forall\varepsilon>0\quad\exists N\in\mathbb{N}\quad
+  \forall n\ge N:\quad |x_n-a|<\varepsilon.
+\]
+\end{definition}
+
+\begin{example}
+Последовательность $x_n=1/n$ сходится к нулю.
+Для любого $\varepsilon>0$ выберем натуральное $N>1/\varepsilon$.
+Тогда при $n\ge N$ выполнено $|x_n|=1/n\le 1/N<\varepsilon$.
+\end{example}
+
+% Замените этот пример содержанием своего первого билета.

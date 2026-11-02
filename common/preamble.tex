@@ -1,0 +1,29 @@
+% Компилятор: XeLaTeX. Эти шрифты доступны в пакете fonts-dejavu-core.
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+\setotherlanguage{english}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=25mm]{geometry}
+\usepackage{xcolor}
+\definecolor{linkblue}{HTML}{174E78}
+\usepackage[unicode,colorlinks=true,linkcolor=linkblue,urlcolor=linkblue]{hyperref}
+\setlength{\emergencystretch}{2em}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Определение}
+\newtheorem*{example}{Пример}
+\theoremstyle{plain}
+\newtheorem*{theorem}{Теорема}
+\newtheorem*{lemma}{Лемма}
+
+% Номер указывается явно и совпадает с номером в официальном списке.
+% Поэтому отсутствие билета 02 не перенумерует билет 03 в билет 02.
+\newcommand{\ticket}[2]{%
+  \clearpage
+  \section*{\raggedright Билет #1. #2}%
+  \addcontentsline{toc}{section}{Билет #1. #2}%
+}

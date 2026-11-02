@@ -1,0 +1,22 @@
+\ticket{02}{Непрерывность функции в точке}
+\label{ticket:02}
+
+\begin{definition}
+Пусть функция $f$ определена в некоторой окрестности точки $a$.
+Функция $f$ непрерывна в точке $a$, если
+\[
+  \forall\varepsilon>0\quad\exists\delta>0\quad
+  \forall x:\quad |x-a|<\delta
+  \ \Longrightarrow\ |f(x)-f(a)|<\varepsilon.
+\]
+\end{definition}
+
+\begin{example}
+Функция $f(x)=x^2$ непрерывна в нуле.
+Достаточно взять $\delta=\sqrt{\varepsilon}$, поскольку
+\[
+  |x|<\delta \quad\Longrightarrow\quad |x^2-0|<\delta^2=\varepsilon.
+\]
+\end{example}
+
+% Это пример оформления, а не утвержденный список билетов вашего курса.
