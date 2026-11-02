@@ -1,7 +1,8 @@
 # Математический анализ: билеты
 
-**[Открыть актуальный PDF](https://github.com/YOUR_GITHUB_LOGIN/matan-notes/blob/pdf/tickets.pdf)** ·
-**[Скачать актуальный PDF](https://github.com/YOUR_GITHUB_LOGIN/matan-notes/raw/refs/heads/pdf/tickets.pdf)**
+**[Открыть актуальный PDF](https://github.com/greegorr/matan-notes/blob/pdf/tickets.pdf)** ·
+**[Скачать актуальный PDF](https://github.com/greegorr/matan-notes/raw/refs/heads/pdf/tickets.pdf)** ·
+**[Сообщить об ошибке](https://github.com/greegorr/matan-notes/issues/new?template=error.yml)**
 
 Ссылки начнут работать после первой успешной автоматической публикации.
 PDF обновляется после принятия правок в `main` и завершения сборки.
@@ -16,6 +17,7 @@ PDF обновляется после принятия правок в `main` и
 - Один PR должен содержать одно связное исправление с кратким объяснением.
 
 Модераторы проверяют математику, автоматическая сборка проверяет компиляцию.
+Сейчас модератор проекта — [@greegorr](https://github.com/greegorr).
 
 ## Как устроен проект
 

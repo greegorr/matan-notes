@@ -20,11 +20,12 @@
 
 ```bash
 sudo apt-get update
-sudo apt-get install -y python3 latexmk texlive-xetex texlive-lang-cyrillic fonts-dejavu-core
+sudo apt-get install -y python3 latexmk texlive-xetex texlive-lang-cyrillic lmodern fonts-dejavu-core
 python3 scripts/build.py
 ```
 
 В Windows можно поставить Python, TeX Live с XeLaTeX и latexmk, а также шрифты DejaVu.
+В TeX Live должен быть установлен пакет `lm` (Latin Modern): он нужен XeLaTeX при загрузке класса документа.
 Для небольших правок локальная установка не нужна: PDF собирается на GitHub.
 
 ## Обозначения и оформление
