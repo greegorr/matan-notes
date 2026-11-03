@@ -1,32 +1,47 @@
 % Осень26!A5; нумерация внутри столбца без пустых строк.
-% Источник: лекция 1, §6 (строка 146)
-% Источник: лекция 1, §8 (строка 209)
-\ticket{03}{Лемма о дифференцировании ``сдвига\textquotesingle\textquotesingle{}}
+% Источник: авторская заготовка пользователя в чате.
+\ticket{03}{Лемма о дифференцировании «сдвига»}
 \label{ticket:03}
 
 \begin{lemma}
-Пусть $E\subset\mathbb R^m$ открыто, $f\in C^r(E)$ и $a+th\in E$ для всех $t$ из открытого интервала $I$.
-Для $\varphi(t)=f(a+th)$ и $0\le k\le r$ выполнено
+Пусть $E\subset\mathbb R^m$ открыто,
+$f\colon E\to\mathbb R$, $f\in C^r(E)$, $a\in E$, $h\in\mathbb R^m$.
+Пусть для всех $t\in[-1,1]$ выполнено $a+th\in E$ и
+\[
+  \varphi(t)=f(a+th).
+\]
+Тогда при $0\le k\le r$ для всех $t\in(-1,1)$
 \[
   \varphi^{(k)}(t)
-  =\sum_{|\alpha|=k}\frac{k!}{\alpha!}h^\alpha D^\alpha f(a+th).
+  =\sum_{j:\,|j|=k}\frac{k!}{j!}h^j
+    \frac{\partial^{|j|}f}{\partial x_j}(a+th).
 \]
-Мультииндексы определены в \hyperref[ticket:02]{билете Т02}.
 \end{lemma}
 
 \begin{proof}
-По правилу дифференцирования композиции
 \[
-  \varphi'(t)=\sum_{i=1}^m h_i\,\partial_i f(a+th).
+  \begin{aligned}
+    \varphi'(t)
+    &=\frac{d}{dt}f(a+th)\\
+    &=\frac{d}{dt}f(a_1+th_1,\ldots,a_m+th_m)\\
+    &=\sum_{i=1}^{m}f'_{x_i}(a+th)h_i.
+  \end{aligned}
 \]
-Повторяя дифференцирование $k$ раз, получаем
 \[
-  \varphi^{(k)}(t)
-  =\sum_{i_1,\ldots,i_k=1}^m
-    h_{i_1}\cdots h_{i_k}\,
-    \partial_{i_1}\cdots\partial_{i_k}f(a+th).
+  \begin{aligned}
+    \varphi''(t)
+    &=\sum_{i=1}^{m}\frac{d}{dt}\bigl(f'_{x_i}(a+th)\bigr)h_i\\
+    &=\sum_{i=1}^{m}\sum_{j=1}^{m}f''_{x_jx_i}(a+th)h_jh_i.
+  \end{aligned}
 \]
-Для фиксированного мультииндекса $\alpha$ с $|\alpha|=k$ все производные с соответствующими кратностями равны по \hyperref[ticket:01]{теореме о перестановке производных}.
-Число таких наборов индексов равно $k!/\alpha!$.
-Группировка слагаемых даёт требуемую формулу.
+\[
+  \begin{aligned}
+    \varphi^{(k)}(t)
+    &=\sum_{i_1=1}^{m}\ldots\sum_{i_k=1}^{m}
+      f^{(k)}_{x_{i_1}x_{i_2}\ldots x_{i_k}}(a+th)
+      h_{i_1}h_{i_2}\ldots h_{i_k}\\
+    &=\sum_{|j|=k}\frac{k!}{j!}h^j
+      \frac{\partial^k f}{\partial x_j}(a+th).
+  \end{aligned}
+\]
 \end{proof}
