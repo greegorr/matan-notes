@@ -2,7 +2,7 @@
 
 ## Через сайт GitHub
 
-1. Откройте исходный репозиторий, ветку `main` и нужный файл `tickets/ticket-XX.tex`.
+1. Откройте исходный репозиторий, ветку `main` и нужный файл `tickets/ticket-XX.tex` или `definitions/definition-XX.tex`.
 2. Нажмите карандаш (Edit). Если GitHub предложит создать fork, согласитесь.
 3. Исправьте текст. Не меняйте попутно оформление всего файла.
 4. Нажмите Commit changes / Propose changes, затем создайте pull request в `main` исходного репозитория.
@@ -12,7 +12,9 @@
    Общедоступный актуальный документ лежит в ветке pdf и не требует входа в публичный репозиторий.
 7. Ответьте на комментарии модератора; после одобрения модератор выполнит Merge.
 
-Для нового билета добавьте `tickets/ticket-03.tex` по примеру существующего файла.
+Для новой теоремы добавьте `tickets/ticket-XX.tex` по примеру существующего файла.
+Для определения или формулировки добавьте `definitions/definition-XX.tex` с командой `\definitionticket{XX}{Название}`.
+Номер берите из соответствующего списка в MATERIALS.md; для новой темы сначала дополните список.
 Один файл содержит один билет и не содержит `\documentclass`, `\begin{document}` или `\end{document}`.
 Писать список `\input` вручную не нужно.
 
@@ -21,7 +23,7 @@
 ```bash
 sudo apt-get update
 sudo apt-get install -y python3 latexmk texlive-xetex texlive-lang-cyrillic \
-  texlive-fonts-recommended lmodern fonts-dejavu-core
+  texlive-fonts-recommended lmodern fonts-dejavu-extra
 python3 scripts/build.py
 ```
 
@@ -35,6 +37,8 @@ python3 scripts/build.py
 - Сверяйтесь с официальным списком билетов и обозначениями лектора.
 - Для определений используйте definition, теорем - theorem, доказательств - proof.
 - У каждого билета уникальная метка ticket:XX; ссылки делайте через \hyperref или \pageref.
+- У определений метки definition:XX; в PDF два списка обозначены ТXX и ОXX.
+- Сохраняйте пометки о неполном материале, пока соответствующий пробел не заполнен и не проверен.
 - Пакеты и общие команды добавляйте в common/preamble.tex.
 - Каждое предложение по возможности начинайте с новой строки исходника.
 - Не редактируйте generated/: он пересоздаётся при каждой сборке.
