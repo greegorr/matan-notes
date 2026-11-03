@@ -1,48 +1,109 @@
-% Осень26!A4; нумерация внутри столбца без пустых строк.
-% Источник: лекция 1, §6 (строка 146)
-% Источник: лекция 1, §7 (строка 173)
+% Конспект
 \ticket{02}{Полиномиальная формула}
 \label{ticket:02}
 
 \begin{definition}
-\textbf{Мультииндекс} --- набор $\alpha=(\alpha_1,\ldots,\alpha_m)\in\mathbb N_0^m$.
-Используются обозначения
+Мультииндекс в $\mathbb R^m$ --- это набор
 \[
-  |\alpha|=\alpha_1+\cdots+\alpha_m,\quad
-  \alpha!=\alpha_1!\cdots\alpha_m!,\quad
-  x^\alpha=x_1^{\alpha_1}\cdots x_m^{\alpha_m},
+  k=(k_1,\ldots,k_m),\qquad k_i\in\mathbb N\cup\{0\}.
+\]
+Число
+\[
+  |k|=k_1+\ldots+k_m
+\]
+называется высотой мультииндекса.
+
+Обозначения:
+\[
+  k!:=k_1!\cdot k_2!\cdot\ldots\cdot k_m!,
 \]
 \[
-  D^\alpha f=\frac{\partial^{|\alpha|}f}
-  {\partial x_1^{\alpha_1}\cdots\partial x_m^{\alpha_m}}.
+  x^k:=x_1^{k_1}x_2^{k_2}\ldots x_m^{k_m},
+  \qquad x\in\mathbb R^m,
+\]
+\[
+  \frac{\partial^{|k|}f}{\partial x^k}
+  :=\frac{\partial^{|k|}f}
+  {\partial x_1^{k_1}\partial x_2^{k_2}\ldots\partial x_m^{k_m}}.
 \]
 \end{definition}
 
-\begin{lemma}
-Для элементов $a_1,\ldots,a_m$ коммутативной алгебры с единицей и $r\in\mathbb N$ выполнено
+\begin{lemma}[Полиномиальная формула]
+Пусть $a_1,\ldots,a_m\in\mathbb R$, $r\in\mathbb N$.
+Тогда
 \[
-  (a_1+\cdots+a_m)^r
-  =\sum_{|\alpha|=r}\frac{r!}{\alpha!}a^\alpha.
+  \begin{aligned}
+    (a_1+\ldots+a_m)^r
+    &=\sum_{i_1=1}^{m}\ldots\sum_{i_r=1}^{m}a_{i_1}\ldots a_{i_r}\\
+    &=\sum_{\substack{j\in(\mathbb N\cup\{0\})^m\\|j|=r}}
+      \frac{r!}{j!}a^j\\
+    &=\sum_{\substack{j_1,\ldots,j_m\ge0\\j_1+\ldots+j_m=r}}
+      \frac{r!}{j_1!\ldots j_m!}a_1^{j_1}\ldots a_m^{j_m}.
+  \end{aligned}
 \]
 \end{lemma}
 
-\begin{proof}
-При $r=1$ формула очевидна.
-Пусть она верна для $r$.
-Умножая на $\sum_{s=1}^m a_s$, получаем
+Число
 \[
-  (a_1+\cdots+a_m)^{r+1}
-  =\sum_{s=1}^m\sum_{|\alpha|=r}\frac{r!}{\alpha!}a^{\alpha+e_s}.
+  \binom{r}{j_1,\ldots,j_m}
+  :=\frac{r!}{j_1!\ldots j_m!},
+  \qquad j_1+\ldots+j_m=r,
 \]
-В $s$-й сумме положим $\beta=\alpha+e_s$.
-Тогда $|\beta|=r+1$, $\beta_s\ge1$ и $1/\alpha!=\beta_s/\beta!$.
-При $\beta_s=0$ добавленное слагаемое равно нулю, поэтому
+называется мультиномиальным коэффициентом.
+
+\begin{proof}
+Индукция по $r$.
+
+\textbf{База:} при $r=1$ формула имеет вид
+\[
+  a_1+\ldots+a_m=a_1+\ldots+a_m.
+\]
+
+\textbf{Переход:} предположим, что формула верна для $r$, и докажем её для $r+1$.
+
+Далее в суммах по мультииндексам все их компоненты считаются неотрицательными целыми числами.
+
+По предположению индукции:
 \[
   \begin{aligned}
-  (a_1+\cdots+a_m)^{r+1}
-   &=\sum_{|\beta|=r+1}\frac{r!}{\beta!}
-     \left(\sum_{s=1}^m\beta_s\right)a^\beta\\
-   &=\sum_{|\beta|=r+1}\frac{(r+1)!}{\beta!}a^\beta.
+    (a_1+\ldots+a_m)^{r+1}
+    &=(a_1+\ldots+a_m)
+      \sum_{|j|=r}\frac{r!}{j_1!\ldots j_m!}
+      a_1^{j_1}\ldots a_m^{j_m}\\
+    &=\sum_{i=1}^{m}\sum_{|j|=r}
+      \frac{r!}{j_1!\ldots j_m!}
+      a_1^{j_1}\ldots a_i^{j_i+1}\ldots a_m^{j_m}.
   \end{aligned}
 \]
+
+В $i$-й сумме сделаем замену индексов:
+\[
+  k_i=j_i+1,\qquad k_\ell=j_\ell\quad(\ell\ne i).
+\]
+Тогда $|k|=r+1$, $k_i\ge1$ и
+\[
+  \frac{r!}{j_1!\ldots j_m!}
+  =\frac{r!}{k_1!\ldots(k_i-1)!\ldots k_m!}
+  =\frac{r!k_i}{k_1!\ldots k_m!}.
+\]
+
+Следовательно,
+\[
+  (a_1+\ldots+a_m)^{r+1}
+  =\sum_{i=1}^{m}\sum_{\substack{|k|=r+1\\k_i\ge1}}
+    \frac{r!k_i}{k!}a^k.
+\]
+
+Условие $k_i\ge1$ можно убрать: при $k_i=0$ добавленные слагаемые равны нулю.
+Поэтому
+\[
+  \begin{aligned}
+    (a_1+\ldots+a_m)^{r+1}
+    &=\sum_{i=1}^{m}\sum_{|k|=r+1}\frac{r!k_i}{k!}a^k\\
+    &=\sum_{|k|=r+1}\frac{r!}{k!}(k_1+\ldots+k_m)a^k\\
+    &=\sum_{|k|=r+1}\frac{(r+1)!}{k!}a^k.
+  \end{aligned}
+\]
+
+Получили формулу для $r+1$.
 \end{proof}
