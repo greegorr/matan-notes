@@ -1,61 +1,51 @@
-% Осень26!A6; нумерация внутри столбца без пустых строк.
-% Источник: лекция 1, §6 (строка 146)
-% Источник: лекция 1, §10 (строка 249)
-% Источник: лекция 1, §11 (строка 279)
+% Конспект и немного воображения
 \ticket{04}{Многомерная формула Тейлора (с остатком в форме Лагранжа и Пеано)}
 \label{ticket:04}
 
-\begin{theorem}[Остаток Лагранжа]
-Пусть $f\in C^{r+1}(E)$, $E\subset\mathbb R^m$ открыто, $B(a,R)\subset E$.
-Для $h$ с $a+h\in B(a,R)$ существует $\theta\in(0,1)$ такое, что
+\begin{theorem}[Формула Тейлора]
+Пусть $E\subset\mathbb R^m$ открыто, $f\colon E\to\mathbb R$,
+$f\in C^{r+1}(E)$, $x\in B(a,R)\subset E$.
+Тогда существует $t\in(0,1)$ такое, что
 \[
   \begin{aligned}
-  f(a+h)={}&\sum_{|\alpha|\le r}\frac{1}{\alpha!}
-             \frac{\partial^{|\alpha|}f}{\partial x_\alpha}(a)h^\alpha\\
-           &+\sum_{|\alpha|=r+1}\frac{1}{\alpha!}
-             \frac{\partial^{r+1}f}{\partial x_\alpha}(a+\theta h)h^\alpha.
+    f(x)={}&\sum_{|j|\le r}\frac{1}{j!}
+      \frac{\partial^{|j|}f}{\partial x_j}(a)(x-a)^j\\
+    &+\sum_{|j|=r+1}\frac{1}{j!}
+      \frac{\partial^{r+1}f}{\partial x_j}\bigl(a+t(x-a)\bigr)(x-a)^j.
   \end{aligned}
 \]
-Мультииндексы определены в \hyperref[ticket:02]{билете Т02}.
 \end{theorem}
 
 \begin{proof}
-Положим $\varphi(t)=f(a+th)$.
-Одномерная формула Тейлора на $[0,1]$ даёт
+Положим
 \[
-  \varphi(1)=\sum_{k=0}^r\frac{\varphi^{(k)}(0)}{k!}
-             +\frac{\varphi^{(r+1)}(\theta)}{(r+1)!}.
+  x=a+h,\qquad h=x-a,\qquad \varphi(t)=f(a+th).
 \]
-По \hyperref[ticket:03]{лемме о дифференцировании сдвига}
+По одномерной формуле Тейлора существует $t\in(0,1)$ такое, что
 \[
-  \frac{\varphi^{(k)}(t)}{k!}
-  =\sum_{|\alpha|=k}\frac{1}{\alpha!}
-    \frac{\partial^k f}{\partial x_\alpha}(a+th)h^\alpha.
+  \begin{aligned}
+    \varphi(1)={}&\varphi(0)+\frac{\varphi'(0)}{1!}1^1+\ldots
+      +\frac{\varphi^{(r)}(0)}{r!}1^r\\
+    &+\frac{\varphi^{(r+1)}(t)}{(r+1)!}1^{r+1}.
+  \end{aligned}
 \]
-Подстановка этих выражений доказывает формулу.
+Подставляя производные $\varphi$ по
+\hyperref[ticket:03]{лемме о дифференцировании «сдвига»}, получаем требуемую формулу.
 \end{proof}
 
-\begin{theorem}[Остаток Пеано]
-Пусть $E\subset\mathbb R^m$ открыто, $a\in E$, $f\in C^r(E)$, $r\ge1$.
-Тогда
+\textbf{Остаток в форме Пеано.}
+При тех же условиях, оценивая остаток Лагранжа, получаем
 \[
-  f(a+h)=\sum_{|\alpha|\le r}\frac{1}{\alpha!}
-           \frac{\partial^{|\alpha|}f}{\partial x_\alpha}(a)h^\alpha
-           +o(|h|^r),\qquad h\to0.
+  f(a+h)=\sum_{|j|\le r}\frac{1}{j!}
+    \frac{\partial^{|j|}f}{\partial x_j}(a)h^j
+    +o(|h|^r),\qquad h\to0.
 \]
-\end{theorem}
 
-\begin{proof}
-Применим формулу Лагранжа порядка $r-1$ и вычтем слагаемые степени $r$, вычисленные в $a$.
-Остаток принимает вид
+Немного подробнее: производные порядка $r+1$ непрерывны,
+поэтому ограничены в некоторой окрестности $a$.
+Следовательно, при $h\to0$
 \[
-  \sum_{|\alpha|=r}
-  \frac{1}{\alpha!}
-  \left(
-    \frac{\partial^r f}{\partial x_\alpha}(a+\theta h)
-    -\frac{\partial^r f}{\partial x_\alpha}(a)
-  \right)h^\alpha.
+  \sum_{|j|=r+1}\frac{1}{j!}
+    \frac{\partial^{r+1}f}{\partial x_j}(a+th)h^j
+  =O(|h|^{r+1})=o(|h|^r).
 \]
-При $h\to0$ коэффициенты стремятся к нулю по непрерывности производных порядка $r$.
-Поскольку $|h^\alpha|\le|h|^r$ и сумма конечна, остаток равен $o(|h|^r)$.
-\end{proof}
