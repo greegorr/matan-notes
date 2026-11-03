@@ -3,36 +3,10 @@
 \definitionticket{27}{Измеримое отображение}
 \label{definition:27}
 
-\subsubsection*{Постановка}
-
-\begin{itemize}
-\tightlist
-\item
-  \((X,\mathcal A,\mu)\) --- пространство с мерой (основное).
-\item
-  \((Y,\mathcal B)\) --- множество с заданной \(\sigma\)-алгеброй \(\mathcal B\) подмножеств \(Y\); \textbf{мера на \(Y\) пока не нужна} (пустое место, «пробельчик»).
-\item
-  \(\varphi\colon X\to Y\) --- отображение.
-\end{itemize}
-
-\subsubsection*{\texorpdfstring{\(\sigma\)-алгебра прообразов; измеримое отображение}{\textbackslash sigma-алгебра прообразов; измеримое отображение}}
-
-\textbf{Факт 1.} Для \textbf{любого} отображения \(\varphi\) (без каких-либо условий на него) система прообразов \[\varphi^{-1}(\mathcal B):=\{\varphi^{-1}(E):\ E\in\mathcal B\}\] --- \(\sigma\)-алгебра в \(X\). \emph{Проверка (упражнение, задано лектором «проверьте, пожалуйста»):} \(\varphi^{-1}(Y)=X\); \(\varphi^{-1}(\complement E)=\complement\,\varphi^{-1}(E)\); \(\varphi^{-1}\bigl(\bigcup_k E_k\bigr)=\bigcup_k\varphi^{-1}(E_k)\) --- и аналогично для пересечений. Всё тривиально проверяется.* Контраст лектора: \textbf{образы} множеств из \(\sigma\)-алгебры при отображении \(\sigma\)-алгебру, вообще говоря, не образуют --- а \textbf{прообразы} «почему-то всегда» образуют.
-
 \begin{definition}
-
-\emph{измеримое отображение.} \(\varphi\colon X\to Y\) \textbf{измеримо}, если \[\varphi^{-1}(\mathcal B)\subset\mathcal A,\] т.е. \(\forall E\in\mathcal B:\ \varphi^{-1}(E)\in\mathcal A\) --- прообраз всякого множества из \(\sigma\)-алгебры \(\mathcal B\) измерим относительно \(\mathcal A\). (Мера \(\mu\) в определении не участвует --- измеримость есть свойство относительно \(\sigma\)-алгебр; «измеримо по мере \(\mu\)» --- синоним в нашей ситуации.)
-
+Пусть $(X,\mathcal A)$ и $(Y,\mathcal B)$ --- множества с $\sigma$-алгебрами.
+Отображение $\varphi:X\to Y$ называется \textbf{измеримым}, если
+\[
+  \varphi^{-1}(E)\in\mathcal A\qquad\text{для всех }E\in\mathcal B.
+\]
 \end{definition}
-
-\subsubsection*{Измеримость композиции}
-
-\textbf{Наблюдение.} Пусть \(f\colon Y\to\overline{\mathbb R}\) измерима относительно \(\sigma\)-алгебры \(\mathcal B\), и \(\varphi\colon X\to Y\) измеримо. Тогда композиция \[f\circ\varphi\colon X\to\overline{\mathbb R},\qquad x\mapsto f(\varphi(x)),\] измерима относительно \(\mathcal A\).
-
-\begin{proof}
-
-Для произвольного \(a\in\mathbb R\) рассмотрим типичное множество Лебега: \[\{x\in X:\ f(\varphi(x))<a\}=\varphi^{-1}\bigl(\{y\in Y:\ f(y)<a\}\bigr)=\varphi^{-1}\bigl(Y(f<a)\bigr).\] Множество \(Y(f<a)\) лежит в \(\mathcal B\) (измеримость \(f\)), поэтому его прообраз лежит в \(\mathcal A\) (измеримость \(\varphi\)).
-
-\end{proof}
-
-Это «замечательный задел» для замены переменных: подставляя вместо переменной \(y\) функцию \(\varphi(x)\), мы из измеримой функции получаем измеримую: \(f(y)\ \leadsto\ f(\varphi(x))\).

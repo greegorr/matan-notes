@@ -3,4 +3,11 @@
 \definitionticket{11}{Ячейка}
 \label{definition:11}
 
-\textbf{ячейки} в \(\mathbb{R}^m\) : для \(a,b\in\mathbb{R}^m\) \[[a,b)=\{x\in\mathbb{R}^m:\ a_i\le x_i<b_i\ \forall i\in\overline{1,m}\}\] --- «полуоткрытые параллелепипеды». Совокупность всех ячеек \(\mathcal{P}^m\) (вместе с «воображаемой пустой ячейкой» \(\varnothing\)) --- полукольцо. В \(\mathbb{R}^1\) ячейки --- полуинтервалы \([a,b)\);
+\begin{definition}
+Пусть $a,b\in\mathbb R^m$, $a_i\le b_i$ для всех $i$.
+\textbf{Ячейкой} в $\mathbb R^m$ называется множество
+\[
+  [a,b):=\prod_{i=1}^{m}[a_i,b_i)
+  =\{x\in\mathbb R^m:\ a_i\le x_i<b_i,\ i=1,\ldots,m\}.
+\]
+\end{definition}

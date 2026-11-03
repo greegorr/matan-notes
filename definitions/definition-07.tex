@@ -3,26 +3,27 @@
 \definitionticket{07}{Формулировка теоремы о неявном отображении в терминах систем уравнений}
 \label{definition:07}
 
-Система \(n\) уравнений с \(m\) параметрами \(x_1,\ldots,x_m\) и \(n\) неизвестными \(y_1,\ldots,y_n\) записывается в виде \[F_i(x_1,\ldots,x_m,y_1,\ldots,y_n)=0,\qquad i=1,\ldots,n.\] Условие невырожденности относится к квадратной матрице производных по неизвестным \(y\).
-
-\subsubsection*{Соглашения о размерностях; блочная запись производного оператора}
-
-Работаем в \(\mathbb R^{m+n}\); точку записываем как пару \[(x,y),\qquad x=(x_1,\dots,x_m)\in\mathbb R^m,\quad y=(y_1,\dots,y_n)\in\mathbb R^n\] --- «рядышком подряд» \(m+n\) координат. Пусть \(F\colon O\to\mathbb R^n\) --- отображение из открытого \(O\subset\mathbb R^{m+n}\) с координатными функциями \(F_1,\dots,F_n\). Производный оператор \(F'(x,y)\) --- матрица размера \(n\times(m+n)\); в её столбцах --- сначала производные по иксам, потом по игрекам. Мысленно поделив матрицу на два блока, обозначаем: \[F'(x,y)=\bigl(\,F'_x(x,y)\ \bigl|\ F'_y(x,y)\,\bigr),\qquad
-F'_x=\Bigl(\frac{\partial F_i}{\partial x_j}\Bigr)_{\substack{i=1..n\\ j=1..m}},\quad
-F'_y=\Bigl(\frac{\partial F_i}{\partial y_j}\Bigr)_{\substack{i=1..n\\ j=1..n}} .\] Блок \(F'_y\) --- \textbf{квадратный} \(n\times n\); о нём можно спрашивать, обратим ли он (равен ли нулю его определитель).
-
-\subsubsection*{Формулировка теоремы}
-
 \begin{theorem}
-
-\emph{о неявном отображении.} Пусть \(O\subset\mathbb R^{m+n}\) открыто, \(F\colon O\to\mathbb R^n\) --- класса \(C^r\), \(r\in\{1,2,\dots\}\cup\{\infty\}\). Пусть найдена точка \((a,b)\in O\) (\(a\in\mathbb R^m\), \(b\in\mathbb R^n\)), в которой \[F(a,b)=0,\] и блок производного оператора по игрекам невырожден: \[\det F'_y(a,b)\ \ne\ 0.\] Тогда:
-
-\textbf{(1)} существуют открытое множество \(P\subset\mathbb R^m\), \(a\in P\), открытое множество \(Q\subset\mathbb R^n\), \(b\in Q\), и отображение \(\varphi\colon P\to Q\) класса \(C^r\), такие что \[F\bigl(x,\varphi(x)\bigr)=0\qquad\text{для всех }x\in P;\]
-
-\textbf{(2)} \(\varphi\) определено однозначно: для каждого \(x\in P\) точка \(\varphi(x)\) --- \textbf{единственный} \(y\in Q\) с \(F(x,y)=0\) («в целом решений может быть и несколько, но те, что близки к \(b\), задают правило однозначно» --- уравнение \(F=0\) на \(P\times Q\) высекает в точности график \(\varphi\));
-
-\textbf{(3)} справедлива формула для производного оператора неявного отображения: \[\varphi'(x)\ =\ -\Bigl(F'_y\bigl(x,\varphi(x)\bigr)\Bigr)^{-1}\,F'_x\bigl(x,\varphi(x)\bigr)\qquad(x\in P)\] («формула не сказать, что очень ценная, она автоматически получается; главное --- виден характер формулы, и в точке \((a,b)\) она полностью вычислима»).
-
-\(\varphi\) и есть \textbf{неявное отображение}: «игреки выражаются через иксы» без явной формулы. Число уравнений (\(n\)) совпадает с числом игреков; уравнение \(F=0\) --- «система из \(n\) уравнений от \(m+n\) переменных».
-
+Пусть $O\subset\mathbb R^{m+n}$ открыто, $F=(F_1,\ldots,F_n):O\to\mathbb R^n$ принадлежит классу $C^r$, $r\in\mathbb N\cup\{\infty\}$, и $(a,b)\in O$.
+Рассмотрим систему
+\[
+  F_i(x_1,\ldots,x_m,y_1,\ldots,y_n)=0,
+  \qquad i=1,\ldots,n.
+\]
+Пусть $F(a,b)=0$ и
+\[
+  \det F'_y(a,b)\ne0,
+  \qquad F'_y=\left(\frac{\partial F_i}{\partial y_j}\right)_{i,j=1}^{n}.
+\]
+Тогда существуют открытые окрестности $P\subset\mathbb R^m$ точки $a$ и $Q\subset\mathbb R^n$ точки $b$, $P\times Q\subset O$, и единственное отображение $\varphi:P\to Q$ класса $C^r$ такие, что $\varphi(a)=b$ и
+\[
+  F(x,y)=0\quad\Longleftrightarrow\quad y=\varphi(x)
+  \qquad ((x,y)\in P\times Q).
+\]
+Его производная задаётся формулой
+\[
+  \varphi'(x)=
+  -\bigl(F'_y(x,\varphi(x))\bigr)^{-1}F'_x(x,\varphi(x)),
+\]
+где $F'_x=(\partial F_i/\partial x_j)_{i=1,\ldots,n;\,j=1,\ldots,m}$.
 \end{theorem}
