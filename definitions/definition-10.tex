@@ -1,30 +1,54 @@
-% Осень26!B13; нумерация внутри столбца без пустых строк.
-% Источник: лекция 4, §9 (пространство с мерой)
-% Источник: лекция 2, §5 (строка 148)
-% Источник: лекция 2, §11 (строка 313)
+% Конспект
 \definitionticket{10}{Объем, мера, пространство с мерой}
 \label{definition:10}
 
 \begin{definition}
-Пусть $\mathcal P$ --- полукольцо подмножеств $X$.
-Функция $\mu:\mathcal P\to[0,+\infty]$ называется \textbf{объёмом}, если $\mu(\varnothing)=0$ и для любых попарно непересекающихся $A_1,\ldots,A_n\in\mathcal P$, объединение которых $A$ принадлежит $\mathcal P$, выполнено
+Функция
 \[
-  A=\bigsqcup_{i=1}^{n}A_i
-  \quad\Longrightarrow\quad
-  \mu(A)=\sum_{i=1}^{n}\mu(A_i).
+    \mu:\mathcal{P}\to\overline{\mathbb{R}},
 \]
+где \(\mathcal{P}\) --- кольцо, называется аддитивной, если:
+\begin{enumerate}
+    \item \(\mu\) не принимает бесконечных значений разных знаков.
+
+    \item \(\mu(\varnothing)=0\).
+
+    \item Для любых попарно непересекающихся множеств
+    \(A_1,\ldots,A_n\in\mathcal{P}\), если
+    \[
+        \bigsqcup_{i=1}^{n}A_i\in\mathcal{P},
+    \]
+    то
+    \[
+        \mu\left(\bigsqcup_{i=1}^{n}A_i\right)
+        =\sum_{i=1}^{n}\mu(A_i).
+    \]
+\end{enumerate}
 \end{definition}
 
 \begin{definition}
-Пусть $\mathcal P$ --- полукольцо подмножеств $X$.
-Функция $\mu:\mathcal P\to[0,+\infty]$ называется \textbf{мерой}, если $\mu(\varnothing)=0$ и для любых попарно непересекающихся $A_i\in\mathcal P$, $i\in\mathbb N$, объединение которых $A$ принадлежит $\mathcal P$, выполнено
+Функция
 \[
-  A=\bigsqcup_{i=1}^{\infty}A_i
-  \quad\Longrightarrow\quad
-  \mu(A)=\sum_{i=1}^{\infty}\mu(A_i).
+    \mu:\mathcal{P}\to\overline{\mathbb{R}}
 \]
+называется объёмом, если \(\mu\ge 0\) и \(\mu\) аддитивна.
 \end{definition}
 
+Если \(X\in\mathcal{P}\) и \(\mu(X)<+\infty\), то
+\(\mu\) --- конечный объём.
+
 \begin{definition}
-\textbf{Пространство с мерой} --- тройка $(X,\mathcal A,\mu)$, где $X$ --- множество, $\mathcal A$ --- $\sigma$-алгебра его подмножеств, $\mu$ --- мера на $\mathcal A$.
+Функция
+\[
+    \mu:\mathcal{P}\to\overline{\mathbb{R}}
+\]
+называется мерой, если \(\mu\) --- объём и выполнена
+счётная аддитивность:
+для любых \(A,A_1,A_2,\ldots\in\mathcal{P}\),
+где \(A_1,A_2,\ldots\) попарно не пересекаются,
+\[
+    A=\bigsqcup_{i=1}^{\infty}A_i
+    \quad\Longrightarrow\quad
+    \mu(A)=\sum_{i=1}^{\infty}\mu(A_i).
+\]
 \end{definition}

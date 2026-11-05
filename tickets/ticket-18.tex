@@ -1,35 +1,107 @@
-% Осень26!A21; нумерация внутри столбца без пустых строк.
-% Источник: лекция 2, §8 (строка 227)
-% Источник: лекция 2, §9 (строка 251)
+% Конспект
 \ticket{18}{Свойства объема: усиленная монотонность, конечная полуаддитивность}
 \label{ticket:18}
 
 \begin{theorem}
-Пусть $\mu$ --- объём на полукольце $\mathcal P$, $A,A_1,\ldots,A_n\in\mathcal P$.
+Пусть \(\mu:\mathcal{P}\to\mathbb{R}\) --- объём.
+Тогда \(\mu\) удовлетворяет следующим свойствам:
 \begin{enumerate}
-  \item Если $A_i$ попарно не пересекаются и $\bigsqcup_{i=1}^n A_i\subset A$, то
-  \[
-    \sum_{i=1}^n\mu(A_i)\le\mu(A).
-  \]
-  \item Если $A\subset\bigcup_{i=1}^n A_i$, то
-  \[
-    \mu(A)\le\sum_{i=1}^n\mu(A_i).
-  \]
+    \item \textbf{Усиленная монотонность.}
+
+    Пусть \(A_1,\ldots,A_n\in\mathcal{P}\) попарно
+    не пересекаются, \(A\in\mathcal{P}\) и
+    \[
+        \bigsqcup_{i=1}^{n}A_i\subset A.
+    \]
+    Тогда
+    \[
+        \sum_{i=1}^{n}\mu(A_i)\le\mu(A).
+    \]
+
+    \item \textbf{Конечная полуаддитивность.}
+
+    Пусть \(A_1,\ldots,A_n\in\mathcal{P}\),
+    \(A\in\mathcal{P}\) и
+    \[
+        A\subset\bigcup_{i=1}^{n}A_i.
+    \]
+    Тогда
+    \[
+        \mu(A)\le\sum_{i=1}^{n}\mu(A_i).
+    \]
 \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-\textbf{1.} По свойствам полукольца $A\setminus\bigcup_i A_i$ разбивается в конечное дизъюнктное объединение $D_j\in\mathcal P$.
-Тогда по аддитивности
+\noindent\textbf{1.}
+По свойству полукольца
 \[
-  \mu(A)=\sum_i\mu(A_i)+\sum_j\mu(D_j)\ge\sum_i\mu(A_i).
+    A\setminus\left(\bigsqcup_{i=1}^{n}A_i\right)
+    =\bigsqcup_{j=1}^{\ell}D_j,
+    \qquad D_j\in\mathcal{P}.
+\]
+Тогда
+\[
+    A=
+    \left(\bigsqcup_{i=1}^{n}A_i\right)
+    \sqcup
+    \left(\bigsqcup_{j=1}^{\ell}D_j\right).
+\]
+Следовательно,
+\[
+    \mu(A)
+    =\sum_{i=1}^{n}\mu(A_i)
+     +\sum_{j=1}^{\ell}\mu(D_j)
+    \ge\sum_{i=1}^{n}\mu(A_i).
 \]
 
-\textbf{2.} Положим $B_i=A\cap A_i$ и $C_k=B_k\setminus\bigcup_{i<k}B_i$.
-Множества $C_k$ попарно не пересекаются и покрывают $A$.
-Каждое из них представимо в виде конечного дизъюнктного объединения $C_k=\bigsqcup_j D_{kj}$, $D_{kj}\in\mathcal P$.
-По аддитивности и первому пункту, поскольку $D_{kj}\subset A_k$,
+\medskip
+\noindent\textbf{2.}
+Пусть
 \[
-  \mu(A)=\sum_{k,j}\mu(D_{kj})\le\sum_{k=1}^n\mu(A_k).
+    A\subset\bigcup_{i=1}^{n}A_i.
+\]
+Положим
+\[
+    B_i=A_i\cap A\in\mathcal{P}.
+\]
+Тогда
+\[
+    A=\bigcup_{i=1}^{n}B_i.
+\]
+Положим
+\[
+    C_1=B_1,\qquad
+    C_2=B_2\setminus B_1,\qquad
+    \ldots,\qquad
+    C_k=B_k\setminus
+    \left(\bigcup_{j=1}^{k-1}B_j\right),\qquad\ldots
+\]
+Множества \(C_k\) попарно не пересекаются,
+но не обязательно \(C_k\in\mathcal{P}\). При этом
+\[
+    A=\bigsqcup_{k=1}^{n}C_k.
+\]
+Имеем конечные разложения
+\[
+    C_k
+    =B_k\setminus\left(\bigcup_{j=1}^{k-1}B_j\right)
+    =\bigsqcup_j D_{kj},
+    \qquad D_{kj}\in\mathcal{P}.
+\]
+Тогда
+\[
+    A=\bigsqcup_{k=1}^{n}C_k
+     =\bigsqcup_{k,j}D_{kj},
+\]
+\[
+    \mu(A)
+    =\sum_{k,j}\mu(D_{kj})
+    =\sum_k\sum_j\mu(D_{kj})
+    \le\sum_k\mu(A_k),
+\]
+\[
+    \bigsqcup_j D_{kj}
+    =C_k\subset B_k\subset A_k.
 \]
 \end{proof}
