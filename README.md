@@ -2,6 +2,6 @@
 
 [Открыть PDF](tickets.pdf)
 
-Исходники: https://github.com/greegorr/matan-notes/tree/55dad005de09d14c37167e18484048f85247b57d
+Исходники: https://github.com/greegorr/matan-notes/tree/6f9d45b262c7437273532afc0eeabb901f69418c
 
-Сборка: 2026-11-04 15:04 UTC
+Сборка: 2026-11-05 08:16 UTC
